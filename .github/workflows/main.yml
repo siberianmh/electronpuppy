@@ -1,0 +1,27 @@
+name: Update And Release
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  release:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Post Tweet
+        run: |
+          git config user.email "55543306+pacificocean-bot@users.noreply.github.com"
+          git config user.name "Pacific Ocean Bot"
+          yarn install
+          yarn ts-node ./src/index.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
