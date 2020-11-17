@@ -22,8 +22,3 @@ export const getRightElectron = (version: IVersion) => {
 
   return 'electron'
 }
-
-// export const requireUncached = (module: string) => {
-//   delete require.cache[require.resolve(module)]
-//   return require(module)
-// }

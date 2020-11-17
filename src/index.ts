@@ -81,7 +81,9 @@ const generateMessage = (version: IVersion) => {
   }
 
   const message = `There's a new @electronjs release available: ${version.version} is out now! 🐶
+
 $ npm install ${electron}@${version.version}
+
 🔗 Release notes (will be) available here:
 ${link}
 `
