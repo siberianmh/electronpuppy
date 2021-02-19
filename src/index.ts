@@ -2,23 +2,17 @@ if (
   !process.env.CONSUMER_KEY ||
   !process.env.CONSUMER_SECRET ||
   !process.env.ACCESS_TOKEN ||
-  !process.env.ACCESS_TOKEN_SECRET
+  !process.env.ACCESS_TOKEN_SECRET ||
+  !process.env.EDIS_SERVER_TOKEN
 ) {
   require('dotenv').config()
 }
 import axios from 'axios'
-import * as Twit from 'twit'
 import * as pkg from '../package.json'
 import * as execa from 'execa'
 import { generateLink, getRightElectron } from './utils'
 import { IVersion } from './types'
-
-const twitter = new Twit({
-  consumer_key: process.env.CONSUMER_KEY!,
-  consumer_secret: process.env.CONSUMER_SECRET!,
-  access_token: process.env.ACCESS_TOKEN!,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET!,
-})
+import { twitter } from './lib/twitter'
 
 // TODO: Clarify these dates
 const MIN_DAYS = 1
@@ -63,7 +57,7 @@ const getReleases = async () => {
   return newReleases
 }
 
-const generateMessage = (version: IVersion) => {
+const generateMessage = async (version: IVersion) => {
   if (
     version.npm_package_name === 'NFUSINGv1' ||
     version.npm_package_name === 'NFUSINGv2'
@@ -72,7 +66,7 @@ const generateMessage = (version: IVersion) => {
     process.exit(0)
   }
 
-  const link = generateLink(version)
+  const { link, channel } = generateLink(version)
   const electron = getRightElectron(version)
 
   if (electron === 'electron-nightly' && !TWIT_NIGHTLY) {
@@ -89,21 +83,35 @@ ${link}
 `
 
   if (process.env.NODE_ENV !== 'development') {
-    return sendTweet(message)
-  } else {
-    console.log(message)
-  }
-}
-
-const sendTweet = (text: string) => {
-  console.log('Sending tweet :yay:')
-  twitter.post('statuses/update', { status: text }, (err, data) => {
-    if (!err) {
-      return data
+    await sendTweet(message)
+    if (channel === 'stable') {
+      await sendDiscord(version.version)
     }
 
     return
-  })
+  } else {
+    return console.log(message)
+  }
+}
+
+const sendTweet = async (text: string) => {
+  console.log('Sending tweet :yay:')
+  const data = await twitter.post('statuses/update', { status: text })
+  return console.log(data)
+}
+
+const sendDiscord = async (version: string) => {
+  return await axios.post(
+    'https://edis.sibapp.xyz/epuppy-hook',
+    {
+      version: version,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.EDIS_SERVER_TOKEN}`,
+      },
+    }
+  )
 }
 
 const maybePushNewVersion = async () => {
@@ -136,7 +144,7 @@ async function main() {
     console.log('No releases found, exiting.')
     process.exit(0)
   }
-  generateMessage(releases[0])
+  await generateMessage(releases[0])
   await maybePushNewVersion()
 }
 
