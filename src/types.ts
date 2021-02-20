@@ -3,3 +3,5 @@ export interface IVersion {
   readonly npm_package_name: string
   readonly npm_dist_tags: Array<string>
 }
+
+export type IChannels = 'stable' | 'beta' | 'nightly'

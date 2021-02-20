@@ -1,12 +1,12 @@
-import { IVersion } from './types'
+import { IVersion, IChannels } from './types'
 
 export const generateLink = (
   version: IVersion
-): { link: string; channel: string } => {
+): { link: string; channel: IChannels } => {
   console.log('Generating link for message')
   const url = 'https://electronjs.org/releases'
 
-  let obj = {
+  let obj: { link: string; channel: IChannels } = {
     link: `${url}/stable#${version.version}`,
     channel: 'stable',
   }
