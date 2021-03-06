@@ -84,10 +84,9 @@ ${link}
 
   if (process.env.NODE_ENV !== 'development') {
     await sendTweet(message)
-    console.log(channel)
-    await sendDiscord(version.version)
-    // if (channel === 'stable') {
-    // }
+    if (channel === 'stable' || channel === 'beta') {
+      await sendDiscord(version.version)
+    }
   } else {
     return console.log(message)
   }
@@ -100,7 +99,7 @@ const sendTweet = async (text: string) => {
 
 const sendDiscord = async (version: string) => {
   console.log('Sending Discord :yay:')
-  const data = await axios.post(
+  return await axios.post(
     'https://edis.sibapp.xyz/epuppy-hook',
     {
       version: version,
@@ -111,8 +110,6 @@ const sendDiscord = async (version: string) => {
       },
     }
   )
-
-  return console.log(data)
 }
 
 const maybePushNewVersion = async () => {
