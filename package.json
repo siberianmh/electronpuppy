@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "dotenv": "^9.0.2",
+    "dotenv": "^10.0.0",
     "execa": "^5.0.0",
     "mini-electron-releases": "0.0.362",
     "twit": "^2.2.11"
