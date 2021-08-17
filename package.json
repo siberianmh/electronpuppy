@@ -11,7 +11,7 @@
     "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "execa": "^5.1.1",
-    "mini-electron-releases": "0.0.511",
+    "mini-electron-releases": "0.0.514",
     "twit": "^2.2.11"
   },
   "devDependencies": {
