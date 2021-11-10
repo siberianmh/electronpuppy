@@ -100,17 +100,12 @@ const sendTweet = async (text: string) => {
 
 const sendDiscord = async (version: string) => {
   console.log('Sending Discord :yay:')
-  return await axios.post(
-    'https://edis.sibapp.xyz/epuppy-hook',
-    {
-      version: version,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.EDIS_SERVER_TOKEN}`,
-      },
-    }
-  )
+
+  const message = `There a new release available: **Electron v${version}**\n\nhttps://github.com/electron/electron/releases/tag/v${version}`
+
+  return await axios.post(process.env.ELECTRON_DISCORD_HOOK as string, {
+    content: message,
+  })
 }
 
 const maybePushNewVersion = async () => {
