@@ -20,7 +20,7 @@ const TWIT_NIGHTLY = process.env.TWIT_NIGHTLY || true
 
 const foundNewVersion = async () => {
   const verInPackage = pkg.dependencies['mini-electron-releases']
-  // @ts-expect-error
+  // @ts-ignore
   const verOnNPM = (
     await axios.get('https://registry.npmjs.com/mini-electron-releases', {
       responseType: 'json',
