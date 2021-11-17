@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
-    "execa": "^5.1.1",
+    "execa": "^6.0.0",
     "mini-electron-releases": "0.0.714",
     "twit": "^2.2.11"
   },
