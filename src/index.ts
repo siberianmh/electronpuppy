@@ -12,7 +12,7 @@ import * as pkg from '../package.json'
 import * as execa from 'execa'
 import { generateLink, getRightElectron } from './utils'
 import { IVersion } from './types'
-import { twitter } from './lib/twitter'
+// import { twitter } from './lib/twitter'
 
 // TODO: Clarify these dates
 const MIN_DAYS = 1
@@ -67,7 +67,7 @@ const generateMessage = async (version: IVersion) => {
     process.exit(0)
   }
 
-  const { link, channel } = generateLink(version)
+  const { link } = generateLink(version)
   const electron = getRightElectron(version)
 
   if (electron === 'electron-nightly' && !TWIT_NIGHTLY) {
@@ -84,19 +84,19 @@ ${link}
 `
 
   if (process.env.NODE_ENV !== 'development') {
-    await sendTweet(message)
-    if (channel === 'stable' || channel === 'beta') {
-      await sendDiscord(version.version)
-    }
+    // await sendTweet(message)
+    // if (channel === 'stable' || channel === 'beta') {
+    await sendDiscord(version.version)
+    // }
   } else {
     return console.log(message)
   }
 }
 
-const sendTweet = async (text: string) => {
-  console.log('Sending tweet :yay:')
-  return await twitter.post('statuses/update', { status: text })
-}
+// const sendTweet = async (text: string) => {
+//   console.log('Sending tweet :yay:')
+//   return await twitter.post('statuses/update', { status: text })
+// }
 
 const sendDiscord = async (version: string) => {
   console.log('Sending Discord :yay:')
