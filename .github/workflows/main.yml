@@ -26,3 +26,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
           EDIS_SERVER_TOKEN: ${{ secrets.EDIS_SERVER_TOKEN }}
+          ELECTRON_DISCORD_HOOK: ${{ secrets.ELECTRON_DISCORD_HOOK }}
