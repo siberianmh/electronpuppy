@@ -2368,10 +2368,10 @@ mimic-fn@^2.1.0:
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
-mini-electron-releases@0.0.1222:
-  version "0.0.1222"
-  resolved "https://registry.yarnpkg.com/mini-electron-releases/-/mini-electron-releases-0.0.1222.tgz#0a757194c202eec2cbda38e170e9c2e3377ff6a6"
-  integrity sha512-p8As8TT5wMmCPFDQAfr6Ujb3Muqs0S6s8Ky+Q/ifOutFMOQfGkZ4CBKFoV51FDPdBo6tCtamlpRTeKkQyHztrw==
+mini-electron-releases@0.0.1223:
+  version "0.0.1223"
+  resolved "https://registry.yarnpkg.com/mini-electron-releases/-/mini-electron-releases-0.0.1223.tgz#5c886203c2aedc743ddce4de5d20f493c0ce6f8d"
+  integrity sha512-luAR8oKNx1+NV5IY/YwyOFUoRduRkwXg70EM3W6ihg1ea6eXwvlnok9nEHzqHj2PV2P7Osc6ziqLPE9oK311NQ==
 
 minimatch@^3.0.4:
   version "3.0.4"
