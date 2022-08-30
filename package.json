@@ -15,7 +15,7 @@
     "twit": "^2.2.11"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.8",
+    "@types/jest": "^29.0.0",
     "@types/twit": "^2.2.30",
     "jest": "^29.0.1",
     "ts-jest": "^28.0.8",
