@@ -975,10 +975,10 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.0.tgz#7036640b4e21cc2f259ae826ce843d277dad8cff"
   integrity sha512-RJJrrySY7A8havqpGObOB4W92QXKJo63/jFLLgpvOtsGUqbQZ9Sbgl35KMm1DjC6j7AvmmU2bIno+3IyEaemaw==
 
-"@types/twit@^2.2.30":
-  version "2.2.30"
-  resolved "https://registry.yarnpkg.com/@types/twit/-/twit-2.2.30.tgz#2acace6fb1c731f0c92944614305c2667fd391ec"
-  integrity sha512-u9rm+K/vX/A4zSJZ0e3XHyi344/vcRqhj4j/6oHlF8UuuKlytlXrArJbc+jMtT0Q5AQZap7TdEZueQ2sggdRvA==
+"@types/twit@^2.2.31":
+  version "2.2.31"
+  resolved "https://registry.yarnpkg.com/@types/twit/-/twit-2.2.31.tgz#8f0ccb307cd6b83114f3851f35124a91d165bba5"
+  integrity sha512-zdN3k/5hY2ix2koHZ78Y45psNpjX14+9sacY7fctEWFydwAr8mfgcbR3BW7F4LfhVqghRm4VH3NgVytC7JiFWw==
   dependencies:
     "@types/geojson" "*"
     "@types/node" "*"
